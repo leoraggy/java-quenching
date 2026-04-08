@@ -157,7 +157,7 @@ public class Practice {
         if(root == null){
             return 0;
         }
-        
+
         return Math.max(levelCount(root.left), levelCount(root.right)) + 1;
     }
 
@@ -186,7 +186,23 @@ public class Practice {
      * @return the sum of the nodes at the given level
      */
     public static int sumAtLevel(BinaryTreeNode<Integer> root, int level) {
-        return 0;
+        if(root == null){
+            return 0;
+        }
+
+        return sumAtLevel(root, level, 1);
+    }
+
+    public static int sumAtLevel(BinaryTreeNode<Integer> root, int level, int currentLevel) {
+        if(root == null){
+            return 0;
+        }
+
+        if(currentLevel == level){
+           return root.data;
+        }
+
+        return sumAtLevel(root.left, level, currentLevel + 1) + sumAtLevel(root.right, level, currentLevel + 1);
     }
 
 
